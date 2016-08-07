@@ -1,0 +1,6 @@
+D:\LUCRU\Coursera\Stanford - Algorithms\week 2\QuickSort\QuickSort\bin\Debug\QuickSort.exe.config
+D:\LUCRU\Coursera\Stanford - Algorithms\week 2\QuickSort\QuickSort\bin\Debug\QuickSort.exe
+D:\LUCRU\Coursera\Stanford - Algorithms\week 2\QuickSort\QuickSort\bin\Debug\QuickSort.pdb
+D:\LUCRU\Coursera\Stanford - Algorithms\week 2\QuickSort\QuickSort\obj\Debug\QuickSort.csprojResolveAssemblyReference.cache
+D:\LUCRU\Coursera\Stanford - Algorithms\week 2\QuickSort\QuickSort\obj\Debug\QuickSort.exe
+D:\LUCRU\Coursera\Stanford - Algorithms\week 2\QuickSort\QuickSort\obj\Debug\QuickSort.pdb

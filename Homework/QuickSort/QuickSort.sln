@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuickSort", "QuickSort\QuickSort.csproj", "{9CCCCCE7-79ED-4239-97CC-C0E838EA6651}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject1", "UnitTestProject1\UnitTestProject1.csproj", "{830D1BE2-8D20-41CD-B840-5FBFEB615B02}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{9CCCCCE7-79ED-4239-97CC-C0E838EA6651}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9CCCCCE7-79ED-4239-97CC-C0E838EA6651}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9CCCCCE7-79ED-4239-97CC-C0E838EA6651}.Release|Any CPU.Build.0 = Release|Any CPU
+		{830D1BE2-8D20-41CD-B840-5FBFEB615B02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{830D1BE2-8D20-41CD-B840-5FBFEB615B02}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{830D1BE2-8D20-41CD-B840-5FBFEB615B02}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{830D1BE2-8D20-41CD-B840-5FBFEB615B02}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

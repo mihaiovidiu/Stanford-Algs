@@ -1,0 +1,9 @@
+D:\LUCRU\Git Repos\Stanford-Algs\Homework\QuickSort\UnitTestProject1\bin\Debug\QuickSort.txt
+D:\LUCRU\Git Repos\Stanford-Algs\Homework\QuickSort\UnitTestProject1\bin\Debug\UnitTestProject1.dll
+D:\LUCRU\Git Repos\Stanford-Algs\Homework\QuickSort\UnitTestProject1\bin\Debug\UnitTestProject1.pdb
+D:\LUCRU\Git Repos\Stanford-Algs\Homework\QuickSort\UnitTestProject1\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+D:\LUCRU\Git Repos\Stanford-Algs\Homework\QuickSort\UnitTestProject1\bin\Debug\QuickSort.exe
+D:\LUCRU\Git Repos\Stanford-Algs\Homework\QuickSort\UnitTestProject1\bin\Debug\QuickSort.pdb
+D:\LUCRU\Git Repos\Stanford-Algs\Homework\QuickSort\UnitTestProject1\obj\Debug\UnitTestProject1.csprojResolveAssemblyReference.cache
+D:\LUCRU\Git Repos\Stanford-Algs\Homework\QuickSort\UnitTestProject1\obj\Debug\UnitTestProject1.dll
+D:\LUCRU\Git Repos\Stanford-Algs\Homework\QuickSort\UnitTestProject1\obj\Debug\UnitTestProject1.pdb

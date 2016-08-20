@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,10 +9,25 @@ namespace QuickSort
 {
     class Program
     {
+        static int nbOfComparissons = 0;
+
         static void Main(string[] args)
         {
-            int[] a = { 2, 4, 3, 1, 6, 7, 4, 12, 11, 0 };
-            QuickSort(a, 0, a.Length - 1);
+            List<int> numbers = new List<int>();
+            // Read numbers from file
+            using (StreamReader sr = new StreamReader("QuickSort.txt"))
+            {
+                string line;
+                while ((line = sr.ReadLine()) != null)
+                {
+                    numbers.Add(int.Parse(line));
+                }
+            }
+
+            int[] unsortedArray = numbers.ToArray();
+            QuickSort(unsortedArray, 0, unsortedArray.Length - 1);
+            Console.WriteLine("Nb of caparissons was: " + nbOfComparissons);
+            Console.ReadLine();
 
         }
 
@@ -23,8 +39,9 @@ namespace QuickSort
             else
             {
                 // Chose a pivot
-                int pivotIndex = ReturnPivotIndex(array, left, right);
+                int pivotIndex = Utils.ReturnPivotIndex(array, left, right);
                 pivotIndex = Partition(array, left, right, pivotIndex);
+                nbOfComparissons += right - left;
                 QuickSort(array, left, pivotIndex - 1);
                 QuickSort(array, pivotIndex + 1, right);
             }
@@ -51,11 +68,7 @@ namespace QuickSort
             return i - 1; 
         }
 
-        static int ReturnPivotIndex(int[] array, int left, int right)
-        {
-            // Return the first element in the array
-            return left;
-        }
+        
 
         static void swap(int[] array, int a, int b)
         {

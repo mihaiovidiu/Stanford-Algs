@@ -4,3 +4,9 @@ D:\LUCRU\Coursera\Stanford - Algorithms\week 2\QuickSort\QuickSort\bin\Debug\Qui
 D:\LUCRU\Coursera\Stanford - Algorithms\week 2\QuickSort\QuickSort\obj\Debug\QuickSort.csprojResolveAssemblyReference.cache
 D:\LUCRU\Coursera\Stanford - Algorithms\week 2\QuickSort\QuickSort\obj\Debug\QuickSort.exe
 D:\LUCRU\Coursera\Stanford - Algorithms\week 2\QuickSort\QuickSort\obj\Debug\QuickSort.pdb
+D:\LUCRU\Git Repos\Stanford-Algs\Homework\QuickSort\QuickSort\bin\Debug\QuickSort.exe.config
+D:\LUCRU\Git Repos\Stanford-Algs\Homework\QuickSort\QuickSort\obj\Debug\QuickSort.exe
+D:\LUCRU\Git Repos\Stanford-Algs\Homework\QuickSort\QuickSort\obj\Debug\QuickSort.pdb
+D:\LUCRU\Git Repos\Stanford-Algs\Homework\QuickSort\QuickSort\bin\Debug\QuickSort.txt
+D:\LUCRU\Git Repos\Stanford-Algs\Homework\QuickSort\QuickSort\bin\Debug\QuickSort.exe
+D:\LUCRU\Git Repos\Stanford-Algs\Homework\QuickSort\QuickSort\bin\Debug\QuickSort.pdb

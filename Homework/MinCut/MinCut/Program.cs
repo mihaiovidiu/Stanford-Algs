@@ -12,6 +12,8 @@ namespace MinCut
         static void Main(string[] args)
         {
             List<List<int>> adjList = ReadGraph("kargerMinCut.txt");
+            Fuse(adjList, 2, 3);
+            
         }
 
         static List<List<int>> ReadGraph(string fileName)
@@ -51,11 +53,38 @@ namespace MinCut
             while (nbOfVertices > 2)
             {
                 // Chose a random edge and fuse the vertices
-                int randomVertice1 = r.Next(1, nbOfVertices + 1);
-                int randomVertice2 = graphAdjList[randomVertice1][r.Next(0, graphAdjList[randomVertice1].Count)]];
+                int rand = r.Next(0, nbOfVertices);
+                int pivotVertice = graphAdjList[rand][0];
+                int randomVertice = graphAdjList[rand][r.Next(1, graphAdjList[rand].Count)]; 
             }
 
             return 0;
+        }
+
+        static void Fuse(List<List<int>> graphAdjList, int pivot, int vertex)
+        {
+            // find the vertex adj list
+            List<int> vList = graphAdjList.FirstOrDefault(list => list[0] == vertex);
+
+            // find the pivot adj list
+            List<int> pList = graphAdjList.FirstOrDefault(list => list[0] == pivot);
+
+            // dump all the vertices that vertex is connected to onto pivot, and remove self loops
+            for (int i = 1; i < vList.Count; i++)
+            {
+                if (vList[i] != pivot) // else is self loop
+                    pList.Add(vList[i]);
+            }
+
+            // remove vertex list
+            graphAdjList.Remove(vList);
+
+            foreach (List<int> adjList in graphAdjList)
+            {
+                if (adjList.Contains(vertex))
+                    adjList.Remove(vertex);
+            }
+
         }
 
     }

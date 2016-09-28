@@ -12,7 +12,19 @@ namespace MinCut
         static void Main(string[] args)
         {
             List<List<int>> adjList = ReadGraph("kargerMinCut.txt");
-            Fuse(adjList, 2, 3);
+            // Run the min cut algorithm for n^2 * log n times and remember the smallest vallue.
+            int n = adjList.Count;
+            int N = n * n * Convert.ToInt32(Math.Log(n, 2));
+            int minCut = int.MaxValue;
+            for (int i = 0; i < N * 10; i++)
+            {
+                int newMinCut = MinCut(adjList);
+                if (newMinCut < minCut)
+                    minCut = newMinCut;
+            }
+
+            Console.WriteLine($"MinCut value is {minCut}\nWe made {N} runs of Karger's cut algorithm");
+            Console.ReadLine();
             
         }
 
@@ -48,17 +60,28 @@ namespace MinCut
 
         static int MinCut(List<List<int>> graphAdjList)
         {
-            Random r = new Random();
-            int nbOfVertices = graphAdjList.Count;
-            while (nbOfVertices > 2)
+            List<int> li;
+            List<List<int>> adjList = new List<List<int>>(graphAdjList.Count);
+            foreach(List<int> list in graphAdjList)
             {
-                // Chose a random edge and fuse the vertices
-                int rand = r.Next(0, nbOfVertices);
-                int pivotVertice = graphAdjList[rand][0];
-                int randomVertice = graphAdjList[rand][r.Next(1, graphAdjList[rand].Count)]; 
+                li = new List<int>(list);
+                adjList.Add(li);
             }
 
-            return 0;
+
+            Random r = new Random();
+            while (adjList.Count > 2)
+            {
+                // Chose a random edge and fuse the vertices
+                int randPivot = r.Next(0, adjList.Count);
+                int pivotVertice = adjList[randPivot][0];
+                int randVertice = r.Next(1, adjList[randPivot].Count);
+                int randomVertice = adjList[randPivot][randVertice];
+                // Fuse the vertices
+                Fuse(adjList, pivotVertice, randomVertice);
+            }
+            // Only two point remain, calculate the cut
+            return adjList[0].Count - 1;
         }
 
         static void Fuse(List<List<int>> graphAdjList, int pivot, int vertex)
@@ -82,7 +105,20 @@ namespace MinCut
             foreach (List<int> adjList in graphAdjList)
             {
                 if (adjList.Contains(vertex))
-                    adjList.Remove(vertex);
+                {
+                    if (adjList[0] == pivot)
+                    {
+                        adjList.Remove(vertex);
+                    }
+                    else
+                    {
+                        for (int i = 1; i < adjList.Count; i++)
+                        {
+                            if (adjList[i] == vertex)
+                                adjList[i] = pivot;
+                        }
+                    }
+                }
             }
 
         }

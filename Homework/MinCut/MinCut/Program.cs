@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -9,6 +10,8 @@ namespace MinCut
 {
     class Program
     {
+        static Random r = new Random();
+        static Stopwatch sWatch = new Stopwatch();
         static void Main(string[] args)
         {
             List<List<int>> adjList = ReadGraph("kargerMinCut.txt");
@@ -16,15 +19,35 @@ namespace MinCut
             int n = adjList.Count;
             int N = n * n * Convert.ToInt32(Math.Log(n, 2));
             int minCut = int.MaxValue;
-            for (int i = 0; i < N * 10; i++)
+            Console.WriteLine($"Graph with {n} verticles\nWe should make {N} runs of Karger's cut algorithm");
+            Console.WriteLine("Press enter to start. Then press q to stop if you want to stop");
+            ConsoleKeyInfo keyInfo = Console.ReadKey();
+            if (keyInfo.Key == ConsoleKey.Enter)
             {
-                int newMinCut = MinCut(adjList);
-                if (newMinCut < minCut)
-                    minCut = newMinCut;
-            }
+                int i = 0;
+                sWatch.Start();
+                for (i = 0; i < N; i++)
+                {
+                    int newMinCut = MinCut(adjList);
+                    if (newMinCut < minCut)
+                        minCut = newMinCut;
+                    if (i % 100 == 0)
+                    {
+                        Console.WriteLine($"{i + 1} runs completed. Min cut is {minCut}");
+                        if (Console.KeyAvailable)
+                        {
+                            if (Console.ReadKey(true).Key == ConsoleKey.Q)
+                                break;
+                        }
+                    }
 
-            Console.WriteLine($"MinCut value is {minCut}\nWe made {N} runs of Karger's cut algorithm");
-            Console.ReadLine();
+                }
+                sWatch.Stop();
+
+                Console.WriteLine($"Graph with {n} vertices\nMinCut value is {minCut}\nWe made {i + 1} runs of Karger's cut algorithm from the recomended {N}\nExecution took {sWatch.ElapsedMilliseconds / 1000} s");
+
+                Console.ReadLine();
+            }
             
         }
 
@@ -68,8 +91,6 @@ namespace MinCut
                 adjList.Add(li);
             }
 
-
-            Random r = new Random();
             while (adjList.Count > 2)
             {
                 // Chose a random edge and fuse the vertices
@@ -78,19 +99,19 @@ namespace MinCut
                 int randVertice = r.Next(1, adjList[randPivot].Count);
                 int randomVertice = adjList[randPivot][randVertice];
                 // Fuse the vertices
-                Fuse(adjList, pivotVertice, randomVertice);
+                Fuse(adjList, pivotVertice, randomVertice, randPivot);
             }
             // Only two point remain, calculate the cut
             return adjList[0].Count - 1;
         }
 
-        static void Fuse(List<List<int>> graphAdjList, int pivot, int vertex)
+        static void Fuse(List<List<int>> graphAdjList, int pivot, int vertex, int rPivot)
         {
             // find the vertex adj list
             List<int> vList = graphAdjList.FirstOrDefault(list => list[0] == vertex);
 
             // find the pivot adj list
-            List<int> pList = graphAdjList.FirstOrDefault(list => list[0] == pivot);
+            List<int> pList = graphAdjList[rPivot];
 
             // dump all the vertices that vertex is connected to onto pivot, and remove self loops
             for (int i = 1; i < vList.Count; i++)
@@ -108,7 +129,7 @@ namespace MinCut
                 {
                     if (adjList[0] == pivot)
                     {
-                        adjList.Remove(vertex);
+                        adjList.RemoveAll((delegate (int v) { return v == vertex; }));
                     }
                     else
                     {
